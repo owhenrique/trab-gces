@@ -22,3 +22,14 @@ jobs:
       - name: Run Lint
         run: docker-compose run --rm app bundle exec rubocop
         continue-on-error: true
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy to production
+        run: docker-compose -f docker-compose.yml up -d
