@@ -21,4 +21,4 @@ jobs:
 
       - name: Run Lint
         run: docker-compose run --rm app bundle exec rubocop
-        continue-on-error: true
+        continue-on-error: false
